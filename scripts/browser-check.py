@@ -38,3 +38,36 @@ with sync_playwright() as p:
     browser.close()
 
 print(json.dumps({"assets": data, "console_errors": errors, "http_errors": bad_responses, "wav_decode": audio}, indent=2))
+
+
+# --- Persistence check: run, pause (saves), reload, expect the same depot to resume. Uses a fresh browser context. ---
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    ctx = browser.new_context(viewport={"width": 430, "height": 900})
+    page = ctx.new_page()
+    errs = []
+    page.on("pageerror", lambda e: errs.append(str(e)))
+    page.on("console", lambda m: errs.append(m.text) if m.type == "error" else None)
+    page.goto(url)
+    page.wait_for_function("document.body.dataset.simTick !== undefined", timeout=30000)
+    first_boot = page.evaluate("document.body.dataset.boot")
+    page.wait_for_function("Number(document.body.dataset.simTick) >= 3", timeout=15000)
+    page.evaluate("""() => {
+      Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+      document.dispatchEvent(new Event('visibilitychange'));
+    }""")
+    page.wait_for_function("document.body.dataset.saveStatus === 'ok'", timeout=5000)
+    saved_tick = int(page.evaluate("document.body.dataset.simTick"))
+    stored = page.evaluate("Object.keys(localStorage).filter(k => k.startsWith('idle-depot:'))")
+    page.reload()
+    page.wait_for_function("document.body.dataset.simTick !== undefined", timeout=30000)
+    second_boot = page.evaluate("document.body.dataset.boot")
+    resumed_tick = int(page.evaluate("document.body.dataset.simTick"))
+    browser.close()
+
+print(json.dumps({
+    "persistence": {
+        "first_boot": first_boot, "saved_at_tick": saved_tick, "storage_keys": stored,
+        "second_boot": second_boot, "tick_after_reload": resumed_tick, "errors": errs,
+    }
+}, indent=2))

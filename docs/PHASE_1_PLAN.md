@@ -13,16 +13,24 @@ Goal: open the game and watch a small, working, living depot. Not in scope: all 
 - Revenue accrues from handling and storage; one upgrade can be bought and measurably changes throughput.
 - Runs at a steady frame rate on a mid-range Android phone; `npm run ci` green; handoff updated.
 
+## Status
+
+| Task | Status |
+|---|---|
+| P1-01 Sim kernel | **Done** (branch `feature/phase-1-sim-kernel-and-boundaries`): fixed timestep, seeded RNG, deterministic events, state validation, hashing, lint guards |
+| P1-04 Boundaries and saves | **Done** (same branch): `PlatformAdapter` (web), `SaveStore`, versioned envelope, migration chain, composition root, runtime with autosave and a lock that protects unreadable saves |
+| P1-02, P1-03, P1-05 to P1-14 | Not started. Held until Producer rules (D1-D15) and ChatGPT's replacement art arrive; no yard zoning, occupancy, placement, workflow, economy or isometric rendering has been hardened |
+
 ## Task breakdown
 
 Tests listed are required, not optional. "Core" files are under `src/core`.
 
 | ID | Task | Depends on | Files / modules | Acceptance | Tests | Risks |
 |---|---|---|---|---|---|---|
-| P1-01 | Sim kernel: fixed-timestep `advance`, seeded RNG, event list | none | `core/simulation/{clock,rng,advance,events}.ts` | Same seed and ticks give identical state and events | Determinism golden-seed; RNG sequence test | Scope creep into departments |
+| P1-01 | Sim kernel: fixed-timestep `advance`, seeded RNG, event list (DONE) | none | `core/simulation/{clock,rng,advance,events}.ts` | Same seed and ticks give identical state and events | Determinism golden-seed; RNG sequence test | Scope creep into departments |
 | P1-02 | Iso math and grid: grid-to-screen and back, depth sort key, tile ratio decision | art: grid ratio from ChatGPT | `core/yard/iso.ts` (pure), `render/IsoView.ts` | Round-trip conversions exact; one agreed tile ratio | Property test grid<->screen; depth sort ordering cases | Pack tiles are 256x150 (not 2:1): wrong ratio makes seams |
 | P1-03 | Yard model: blocks, rows, slots, stack height, laden/empty zones, occupancy ratio | P1-01 | `core/yard/yard.ts` | Place/remove respects capacity, zone and stacking; occupancy computed | Capacity, zone, stack, occupancy unit tests | D7 zoning rule undecided: make zone strictness config |
-| P1-04 | Composition root and boundaries: `PlatformAdapter` (web), `SaveStore` (local, versioned), config loading | none | `platform/web.ts`, `persistence/{store,envelope}.ts`, `config/` | Save, reload, version migration stub works; core untouched by platform | Save round-trip; migration test with frozen v1 fixture | Over-building before need |
+| P1-04 | Composition root and boundaries: `PlatformAdapter` (web), `SaveStore` (local, versioned), config loading (DONE) | none | `platform/web.ts`, `persistence/{store,envelope}.ts`, `config/` | Save, reload, version migration stub works; core untouched by platform | Save round-trip; migration test with frozen v1 fixture | Over-building before need |
 | P1-05 | Depot scene: ground tiles, buildings placed from a layout config, camera pan/zoom with input abstraction | P1-02 | `render/DepotScene.ts`, `render/camera.ts`, `config/layout.ts` | Pan and zoom smooth on touch and mouse; layout driven by config | Camera clamp and zoom limit unit tests; browser check | Art defects (black tiles, baked text) visible: needs clean art |
 | P1-06 | Container rendering and inspection: sprite by `containerSpriteId`, game-drawn cargo/condition badges (not colour only), tap-to-inspect panel | P1-03, P1-05, clean art | `render/ContainerView.ts`, `ui/Inspector` | Selecting a container shows all fields; badges distinguish laden/empty without colour | Sprite-id mapping (exists); inspector data-binding test | Baked text: block until label-free sprites or strip at load |
 | P1-07 | Phase-1 operations: arrival generator, gate queue, survey step, store-in-yard, dispatch, using `transition()` | P1-01, P1-03 | `core/simulation/{gate,survey,yardops,dispatch}.ts` | Containers progress through valid transitions only; queues grow when capacity is short | Integration run over N ticks; invalid-transition rejection; queue growth under low capacity | Rules provisional (D1-D7) |

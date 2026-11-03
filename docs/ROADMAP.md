@@ -2,8 +2,8 @@
 
 | Phase | Scope | Status |
 |---|---|---|
-| 0 | Foundation: repo, design docs, architecture, data model, economy, asset registry and integration, test infra | Complete pending Producer and ChatGPT review (PR `feature/phase-0-completion`) |
-| 1 | Playable depot vertical slice | Planned: `docs/PHASE_1_PLAN.md`. Gated on Producer decisions D9, D11, D13 and clean art (see below) |
+| 0 | Foundation: repo, design docs, architecture, data model, economy, asset registry and integration, test infra | Accepted in principle; PR #1 open, not merged, review checklist in `docs/ART_FOLLOWUPS.md` |
+| 1 | Playable depot vertical slice | In progress. P1-01 (sim kernel) and P1-04 (boundaries, versioned saves) done on `feature/phase-1-sim-kernel-and-boundaries` (PR pending review). Remaining tasks gated on D1-D15 and clean art, see `docs/PHASE_1_PLAN.md` |
 | 2 | Core operations: gate, survey in/out, yard storage, dispatch, laden/empty | Not started. Needs D1-D7 |
 | 3 | Operational management: workshop, equipment, employees, queues, maintenance | Not started |
 | 4 | Idle economy: revenue, expenses, dashboard, upgrades, offline (local, capped) | Not started. Needs D8, D10, D12, D15 |
