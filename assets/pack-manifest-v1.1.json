@@ -1,0 +1,292 @@
+{
+  "pack": "IDLE DEPOT Asset Pack v1.1",
+  "visual_reference": "assets/concept/producer-visual-reference.png",
+  "engine": "Phaser 3",
+  "formats": {
+    "sprites": "SVG dimensional starter art",
+    "audio": "WAV, 22050 Hz, mono"
+  },
+  "style": "Polished colorful isometric 2.5D; detailed industrial tycoon; navy glossy UI",
+  "assets": [
+    {
+      "path": "assets/audio/music/depot-day-loop.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/music/depot-night-loop.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/sfx/confirm.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/sfx/container-drop.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/sfx/gate-open.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/sfx/notification.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/sfx/reach-stacker-hydraulic.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/sfx/repair-complete.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/sfx/truck-horn.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/audio/sfx/ui-click.wav",
+      "type": "wav"
+    },
+    {
+      "path": "assets/concept/idle-depot-visual-direction.png",
+      "type": "png"
+    },
+    {
+      "path": "assets/concept/producer-visual-reference.png",
+      "type": "png"
+    },
+    {
+      "path": "assets/sprites/buildings/admin-office.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/buildings/equipment-shed.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/buildings/gate-complex.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/buildings/repair-workshop.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/buildings/survey-building.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/buildings/warehouse.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-20ft-empty-av.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-20ft-empty-dm.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-20ft-laden-av.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-20ft-laden-dm.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-40ft-empty-av.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-40ft-empty-dm.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-40ft-laden-av.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-40ft-laden-dm.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-40hc-empty-av.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-40hc-empty-dm.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-40hc-laden-av.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/containers/container-40hc-laden-dm.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/environment/fence.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/environment/gate-barrier.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/environment/street-light.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/environment/traffic-cone.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/environment/tree.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/vehicles/container-truck.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/vehicles/forklift.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/vehicles/fuel-truck.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/vehicles/reach-stacker.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/vehicles/terminal-tractor.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/vehicles/yard-truck.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/workers/gate-staff.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/workers/manager.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/workers/operator.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/workers/surveyor.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/workers/technician.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/sprites/workers/yard-worker.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/tiles/asphalt.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/tiles/concrete.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/tiles/grass.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/tiles/stack-marking.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/tiles/yard-slot.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/contracts.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/dispatch.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/equipment.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/finance.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/gate.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/off-hire.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/repair.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/repo.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/settings.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/staff.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/survey.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/icons/yard.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/logo-idle-depot.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/panels/button-danger.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/panels/button-primary.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/panels/button-success.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/panels/button-warning.svg",
+      "type": "svg"
+    },
+    {
+      "path": "assets/ui/panels/panel-dark.svg",
+      "type": "svg"
+    }
+  ]
+}

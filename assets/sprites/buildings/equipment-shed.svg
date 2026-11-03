@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+    <defs>
+      <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8FCFF"/><stop offset="1" stop-color="#AFC5D4"/></linearGradient>
+      <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55A9F4"/><stop offset="1" stop-color="#15538E"/></linearGradient>
+      <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7770"/><stop offset="1" stop-color="#B72F3C"/></linearGradient>
+      <linearGradient id="green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6DE0A4"/><stop offset="1" stop-color="#178252"/></linearGradient>
+      <linearGradient id="yellow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE16B"/><stop offset="1" stop-color="#D98A16"/></linearGradient>
+      <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FC6E8"/><stop offset="1" stop-color="#416B93"/></linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BDEBFA"/><stop offset="1" stop-color="#4785A8"/></linearGradient>
+      <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="5"/></filter>
+    </defs>
+    <ellipse cx="130" cy="226" rx="115" ry="17" fill="#1A334A" opacity=".2" filter="url(#shadow)"/>
+    <polygon points="22 92 126 34 235 92 130 151" fill="url(#roof)" stroke="#395C79" stroke-width="5"/>
+    <polygon points="22 92 130 151 130 222 22 162" fill="#F3F7F9" stroke="#496A82" stroke-width="5"/>
+    <polygon points="130 151 235 92 235 162 130 222" fill="#C6D7E2" stroke="#496A82" stroke-width="5"/>
+    <path d="M31 96 L130 151 L226 97" fill="none" stroke="#EAF6FC" stroke-width="4"/>
+    <polygon points="42 98 127 51 213 98 130 143" fill="#5E87A7" opacity=".4"/>
+    <rect x="42" y="119" width="33" height="30" fill="url(#glass)" stroke="#58778E" stroke-width="3"/>
+    <rect x="83" y="142" width="32" height="31" fill="url(#glass)" stroke="#58778E" stroke-width="3"/>
+    <rect x="150" y="155" width="34" height="48" fill="#47708D" stroke="#3B5B74" stroke-width="3"/>
+    <rect x="190" y="132" width="27" height="27" fill="url(#glass)" stroke="#58778E" stroke-width="3"/>
+    <rect x="78" y="78" width="92" height="24" rx="4" fill="#F7FBFD" stroke="#58778E" stroke-width="2"/>
+    <text x="124" y="95" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" fill="#234B6A">EQUIPMENT</text>
+    <path d="M32 165 L128 217 L128 225 L22 169 Z" fill="#D5E3EA"/>
+    </svg>

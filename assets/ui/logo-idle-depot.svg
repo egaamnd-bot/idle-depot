@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="240" viewBox="0 0 256 240">
+    <defs>
+      <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8FCFF"/><stop offset="1" stop-color="#AFC5D4"/></linearGradient>
+      <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55A9F4"/><stop offset="1" stop-color="#15538E"/></linearGradient>
+      <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7770"/><stop offset="1" stop-color="#B72F3C"/></linearGradient>
+      <linearGradient id="green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6DE0A4"/><stop offset="1" stop-color="#178252"/></linearGradient>
+      <linearGradient id="yellow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE16B"/><stop offset="1" stop-color="#D98A16"/></linearGradient>
+      <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FC6E8"/><stop offset="1" stop-color="#416B93"/></linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BDEBFA"/><stop offset="1" stop-color="#4785A8"/></linearGradient>
+      <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="5"/></filter>
+    </defs>
+<ellipse cx="130" cy="220" rx="104" ry="15" fill="#132A42" opacity=".25" filter="url(#shadow)"/>
+<path d="M24 84 L72 25 L174 25 L228 72 L228 196 L190 228 L34 210 L12 178 Z" fill="#102A45" stroke="#F7FAFC" stroke-width="8" stroke-linejoin="round"/>
+<path d="M38 83 L78 36 L170 36 L213 75 L213 185 L184 207 L39 193 L27 171 Z" fill="#1C5C91" stroke="#F2B72E" stroke-width="6"/>
+<path d="M50 78 L92 42 L156 42 L194 75" fill="none" stroke="#63B7E9" stroke-width="8"/>
+<path d="M48 92 L198 92" stroke="#F5C84C" stroke-width="5"/>
+<text x="121" y="133" text-anchor="middle" font-family="Arial Black,Arial" font-size="38" font-weight="900" fill="#F5F8FA" stroke="#102A45" stroke-width="5" paint-order="stroke">IDLE</text>
+<text x="121" y="178" text-anchor="middle" font-family="Arial Black,Arial" font-size="43" font-weight="900" fill="#FFD34E" stroke="#102A45" stroke-width="6" paint-order="stroke">DEPOT</text>
+<path d="M52 27 L68 12 L86 27 M70 28 V57" stroke="#F3B72F" stroke-width="8" fill="none" stroke-linecap="round"/>
+</svg>

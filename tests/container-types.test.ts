@@ -6,6 +6,14 @@ describe('container status axes', () => {
     expect(Object.values(CargoStatus).sort()).toEqual(['EMPTY', 'LADEN']);
   });
 
+  it('has the four physical conditions from the brief', () => {
+    expect(Object.values(PhysicalCondition).sort()).toEqual(['AV', 'DM', 'REPAIR_REQUIRED', 'UNDER_INSPECTION']);
+  });
+
+  it('has the eleven operational statuses from the brief', () => {
+    expect(Object.values(OperationalStatus)).toHaveLength(11);
+  });
+
   it('keeps the three axes as disjoint-purpose value sets', () => {
     const cargo = new Set<string>(Object.values(CargoStatus));
     const operational = new Set<string>(Object.values(OperationalStatus));
@@ -14,5 +22,6 @@ describe('container status axes', () => {
       expect(operational.has(v)).toBe(false);
       expect(condition.has(v)).toBe(false);
     }
+    for (const v of condition) expect(operational.has(v)).toBe(false);
   });
 });
