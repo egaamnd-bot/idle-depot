@@ -6,7 +6,7 @@
 - Deterministic simulation kernel: seeded RNG, fixed-step stepper, `advance()` with ordered event delivery, canonical JSON and hashing, state validation (`src/core/simulation`).
 - Versioned save envelope with checksum and migration foundation, `SaveStore`, Web Storage store, typed save/load (`src/persistence`).
 - `PlatformAdapter` and web implementation (`src/platform`); composition root and `SimRuntime` with autosave, pause-save and save lock (`src/app`); sim config placeholders (`src/config/sim.ts`).
-- 66 new tests (117 total), frozen v1 save fixture, browser persistence check.
+- 65 new tests (117 total, up from 52), frozen v1 save fixture, browser persistence check.
 
 ### Changed
 - ESLint: `src/core` forbids clocks, `Math.random`, `crypto`, and imports of `config` and `app`.
