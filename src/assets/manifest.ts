@@ -7,6 +7,8 @@ import { CargoStatus, ContainerSize, PhysicalCondition } from '../core/container
  */
 
 export type AssetKind = 'svg' | 'audio';
+/** `starter` = Asset Pack v1.1 placeholder art awaiting ChatGPT's production replacement (docs/ART_FOLLOWUPS.md). */
+export type AssetStatus = 'starter' | 'production';
 export type AssetGroup =
   | 'container'
   | 'vehicle'
@@ -31,14 +33,15 @@ export interface AssetEntry {
    * labels; see docs/ASSET_SPECIFICATION.md "Known pack defects". Cleared when ChatGPT delivers clean files.
    */
   readonly hasBakedText: boolean;
+  readonly status: AssetStatus;
 }
 
 function svg(group: AssetGroup, dir: string, stems: readonly string[], hasBakedText: boolean): AssetEntry[] {
-  return stems.map((id) => ({ id, kind: 'svg', group, path: `${dir}/${id}.svg`, hasBakedText }));
+  return stems.map((id) => ({ id, kind: 'svg', group, path: `${dir}/${id}.svg`, hasBakedText, status: 'starter' }));
 }
 
 function audio(group: 'music' | 'sfx', dir: string, stems: readonly string[]): AssetEntry[] {
-  return stems.map((id) => ({ id, kind: 'audio', group, path: `${dir}/${id}.wav`, hasBakedText: false }));
+  return stems.map((id) => ({ id, kind: 'audio', group, path: `${dir}/${id}.wav`, hasBakedText: false, status: 'starter' }));
 }
 
 const containerStems = Object.values(ContainerSize).flatMap((size) =>

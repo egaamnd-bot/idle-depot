@@ -12,6 +12,8 @@
 - `scripts/browser-check.py`: optional real-browser asset check.
 - `@types/node` dev dependency (needed to typecheck fs-based tests).
 
+- `docs/ART_FOLLOWUPS.md` review checklist; registry `status: 'starter'` on every asset; gallery caption and `assets/STARTER_ASSETS.md` mark art as placeholder (52 tests).
+
 ### Changed
 - ESLint core-isolation rule now also blocks `src/core` importing `src/assets`.
 - Vite `assetsInlineLimit: 0` so assets always stay real files.

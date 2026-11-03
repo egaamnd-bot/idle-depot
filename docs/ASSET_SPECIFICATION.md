@@ -25,6 +25,8 @@ Target: premium, colourful isometric 2.5D tycoon. Dimensional objects with shado
 
 ## 3. Honest production status
 
+Every v1.1 asset is a **STARTER asset** (`status: 'starter'` in the registry, `assets/STARTER_ASSETS.md`). The replacement checklist with verifiable "done when" criteria is `docs/ART_FOLLOWUPS.md`.
+
 v1.1 is **modular SVG starter art**, not finished production sprites. It is clearly better than v1.0 but **does not yet match the reference image**. Remaining work, all ChatGPT's:
 
 - Vehicles are small car-like silhouettes; the reach stacker, terminal tractor and container truck are not yet recognisable as those machines. The reference shows detailed, distinct machines.

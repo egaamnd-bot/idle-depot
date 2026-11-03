@@ -36,7 +36,7 @@ export class BootScene extends Phaser.Scene {
     const groups: AssetGroup[] = ['container', 'vehicle', 'building', 'worker', 'environment', 'tile', 'ui-icon'];
     const thumb = 52;
     let y = 36;
-    this.add.text(12, 8, 'IDLE DEPOT — asset gallery', { color: '#14243a', fontSize: '16px' });
+    this.add.text(12, 8, 'IDLE DEPOT — STARTER ART v1.1 (placeholder)', { color: '#14243a', fontSize: '16px' });
 
     for (const group of groups) {
       const items = ASSETS.filter((a) => a.group === group && a.kind === 'svg');

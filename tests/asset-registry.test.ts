@@ -65,6 +65,12 @@ describe('asset registry', () => {
   });
 });
 
+describe('starter asset marking', () => {
+  it('marks every Asset Pack v1.1 asset as starter until replacements arrive (docs/ART_FOLLOWUPS.md)', () => {
+    expect(ASSETS.filter((a) => a.status !== 'starter')).toEqual([]);
+  });
+});
+
 describe('container sprite selection', () => {
   it('maps every size x cargo x condition to a registered container sprite', () => {
     for (const size of Object.values(ContainerSize)) {
