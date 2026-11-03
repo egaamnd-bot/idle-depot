@@ -19,7 +19,7 @@ export default tseslint.config(
         {
           patterns: [
             { group: ['phaser', 'phaser/*'], message: 'src/core must not depend on the renderer.' },
-            { group: ['**/render/**', '**/ui/**', '**/platform/**', '**/persistence/**'], message: 'src/core must not depend on outer layers.' },
+            { group: ['**/render/**', '**/ui/**', '**/platform/**', '**/persistence/**', '**/assets/**'], message: 'src/core must not depend on outer layers.' },
             { group: ['@telegram-apps/*', '@capacitor/*'], message: 'src/core must not depend on platform SDKs.' },
           ],
         },

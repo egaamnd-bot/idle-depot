@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="250" viewBox="0 0 260 250">
+    <defs>
+      <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8FCFF"/><stop offset="1" stop-color="#AFC5D4"/></linearGradient>
+      <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55A9F4"/><stop offset="1" stop-color="#15538E"/></linearGradient>
+      <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7770"/><stop offset="1" stop-color="#B72F3C"/></linearGradient>
+      <linearGradient id="green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6DE0A4"/><stop offset="1" stop-color="#178252"/></linearGradient>
+      <linearGradient id="yellow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE16B"/><stop offset="1" stop-color="#D98A16"/></linearGradient>
+      <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FC6E8"/><stop offset="1" stop-color="#416B93"/></linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BDEBFA"/><stop offset="1" stop-color="#4785A8"/></linearGradient>
+      <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="5"/></filter>
+    </defs>
+            <ellipse cx="132" cy="220" rx="112" ry="17" fill="#19334A" opacity=".22" filter="url(#shadow)"/>
+            <polygon points="24,80 61,57 235,57 201,80" fill="#8EC5F0" stroke="#173B5B" stroke-width="4"/>
+            <polygon points="24,80 201,80 201,210 24,210" fill="url(#red)" stroke="#173B5B" stroke-width="4"/>
+            <polygon points="201,80 235,57 235,187 201,210" fill="#174B78" stroke="#173B5B" stroke-width="4"/>
+            <path d="M 54 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/><path d="M 63 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/><path d="M 72 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/><path d="M 81 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/><path d="M 90 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/><path d="M 99 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/><path d="M 108 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/><path d="M 117 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/><path d="M 126 55 l 20 -13" stroke="#EAF6FF" stroke-width="1.4" opacity=".45"/>
+            <path d="M 42 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 50 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 58 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 66 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 74 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 82 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 90 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 98 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 106 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 114 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 122 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 130 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 138 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 146 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 154 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 162 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 170 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 178 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 186 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/><path d="M 194 75 V 201" stroke="#0C3C68" stroke-width="2.3" opacity=".55"/>
+            <path d="M30 88 H195" stroke="#E9F5FF" stroke-width="3" opacity=".45"/>
+            <path d="M30 200 H195" stroke="#0C365A" stroke-width="5" opacity=".5"/>
+            <path d="M24 80 V210 M201 80 V210" stroke="#DCECF8" stroke-width="5" opacity=".7"/>
+            <rect x="32" y="88" width="12" height="114" fill="#D8E9F5" opacity=".24"/>
+            <rect x="193" y="84" width="13" height="124" fill="#D5E9F7" opacity=".35"/>
+            <rect x="211" y="99" width="15" height="15" rx="2" fill="#E6F2FA" opacity=".8"/>
+            <rect x="211" y="176" width="15" height="15" rx="2" fill="#E6F2FA" opacity=".8"/>
+            
+            <text x="115" y="238" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#233C50">40HC • LADEN • AV</text>
+            </svg>

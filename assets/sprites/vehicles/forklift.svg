@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="270" height="250" viewBox="0 0 270 250">
+    <defs>
+      <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8FCFF"/><stop offset="1" stop-color="#AFC5D4"/></linearGradient>
+      <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55A9F4"/><stop offset="1" stop-color="#15538E"/></linearGradient>
+      <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7770"/><stop offset="1" stop-color="#B72F3C"/></linearGradient>
+      <linearGradient id="green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6DE0A4"/><stop offset="1" stop-color="#178252"/></linearGradient>
+      <linearGradient id="yellow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE16B"/><stop offset="1" stop-color="#D98A16"/></linearGradient>
+      <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FC6E8"/><stop offset="1" stop-color="#416B93"/></linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BDEBFA"/><stop offset="1" stop-color="#4785A8"/></linearGradient>
+      <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="5"/></filter>
+    </defs>
+    <ellipse cx="130" cy="205" rx="112" ry="18" fill="#1C344A" opacity=".25" filter="url(#shadow)"/>
+    <polygon points="26 135 66 103 179 103 222 133 190 177 51 177" fill="url(#yellow)" stroke="#263D50" stroke-width="5"/>
+    <polygon points="67 103 91 61 155 61 184 104" fill="url(#glass)" stroke="#263D50" stroke-width="5"/>
+    <polygon points="96 68 149 68 166 99 80 99" fill="#4F829F" stroke="#263D50" stroke-width="3"/>
+    <path d="M30 139 L62 117 L185 117" stroke="#FFF4C7" stroke-width="5" opacity=".8"/>
+    <rect x="44" y="143" width="36" height="11" rx="4" fill="#F9E9A7"/>
+    <rect x="183" y="140" width="22" height="12" rx="3" fill="#E84C4C"/>
+    <path d="M52 176 L52 188 M188 176 L188 188" stroke="#263D50" stroke-width="7"/>
+    <circle cx="73" cy="179" r="23" fill="#26323D" stroke="#111C27" stroke-width="4"/>
+    <circle cx="73" cy="179" r="10" fill="#AABAC4" stroke="#566D7D" stroke-width="3"/>
+    <circle cx="179" cy="179" r="23" fill="#26323D" stroke="#111C27" stroke-width="4"/>
+    <circle cx="179" cy="179" r="10" fill="#AABAC4" stroke="#566D7D" stroke-width="3"/>
+    <path d="M190 93 V37 H220 V183" fill="none" stroke="#293D4D" stroke-width="8"/>
+        <path d="M211 183 H251" stroke="#293D4D" stroke-width="7"/>
+        <path d="M190 48 H222" stroke="#293D4D" stroke-width="5"/>
+    <text x="128" y="235" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#263D50">FORKLIFT</text>
+    </svg>

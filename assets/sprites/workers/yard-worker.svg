@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+    <defs>
+      <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8FCFF"/><stop offset="1" stop-color="#AFC5D4"/></linearGradient>
+      <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55A9F4"/><stop offset="1" stop-color="#15538E"/></linearGradient>
+      <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7770"/><stop offset="1" stop-color="#B72F3C"/></linearGradient>
+      <linearGradient id="green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6DE0A4"/><stop offset="1" stop-color="#178252"/></linearGradient>
+      <linearGradient id="yellow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE16B"/><stop offset="1" stop-color="#D98A16"/></linearGradient>
+      <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FC6E8"/><stop offset="1" stop-color="#416B93"/></linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BDEBFA"/><stop offset="1" stop-color="#4785A8"/></linearGradient>
+      <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="5"/></filter>
+    </defs>
+    <ellipse cx="128" cy="224" rx="39" ry="9" fill="#20374B" opacity=".2"/>
+    <path d="M102 174 L97 218 M151 174 L158 218" stroke="#263D50" stroke-width="15" stroke-linecap="round"/>
+    <path d="M92 217 H111 M151 217 H169" stroke="#253B4C" stroke-width="10" stroke-linecap="round"/>
+    <path d="M87 111 Q128 92 169 111 L178 179 Q128 197 78 179 Z" fill="#299A70" stroke="#28445B" stroke-width="4"/>
+    <path d="M91 133 L165 133" stroke="#F8D75B" stroke-width="8"/>
+    <path d="M92 120 L66 164 M166 120 L190 158" stroke="#D99A70" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="128" cy="73" r="31" fill="#E7B58D" stroke="#76513D" stroke-width="3"/>
+    <path d="M96 66 Q103 28 137 35 Q159 38 161 68 Z" fill="#513C32"/>
+    <path d="M84 64 Q128 25 172 64 L165 76 H91 Z" fill="#F4F7FA" stroke="#435B6E" stroke-width="4"/>
+    <path d="M83 76 H173" stroke="#435B6E" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="117" cy="76" r="3" fill="#293D4D"/><circle cx="139" cy="76" r="3" fill="#293D4D"/>
+    <path d="M119 91 Q128 98 138 91" fill="none" stroke="#A65F50" stroke-width="3" stroke-linecap="round"/>
+    <text x="128" y="247" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#263D50">YARD-WORKER</text>
+    </svg>

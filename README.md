@@ -6,34 +6,53 @@ Targets: web browser, Telegram Mini App, Android (Capacitor), all from one share
 
 ## Status
 
-Phase 0 — Foundation. Repository scaffold only; no gameplay yet. See [docs/ROADMAP.md](docs/ROADMAP.md).
+Phase 0 (Foundation) — documentation, container data model, asset registry and Asset Pack v1.1 integration. No gameplay yet. See [docs/ROADMAP.md](docs/ROADMAP.md) and [docs/PHASE_1_PLAN.md](docs/PHASE_1_PLAN.md).
 
 ## Stack
 
-Phaser 3, TypeScript (strict), Vite, Vitest, ESLint. Planned: Capacitor, Telegram Mini Apps SDK, Node.js backend, PostgreSQL/Supabase.
+Phaser 3, TypeScript (strict), Vite, Vitest, ESLint. Planned, added progressively: Capacitor, Telegram Mini Apps SDK, Node.js backend, PostgreSQL/Supabase.
 
 ## Getting started
 
 ```bash
 npm install
-npm run dev        # local dev server
-npm run ci         # lint + typecheck + test + build (same as GitHub Actions)
+npm run dev        # local dev server (asset gallery)
+npm run ci         # lint + typecheck + test + build (same steps as GitHub Actions)
+```
+
+Optional real-browser asset check (needs Python Playwright; not part of CI):
+
+```bash
+npm run build && npx vite preview --port 4173 &
+python3 scripts/browser-check.py http://localhost:4173/ gallery.png
 ```
 
 ## Layout
 
 ```
-src/core/         Simulation. No Phaser, Telegram or Android imports (enforced by ESLint).
+src/core/         Simulation. No Phaser, UI, platform, persistence or asset imports (enforced by ESLint).
+src/assets/       Asset registry (logical IDs -> files). Rendering code uses IDs, never paths.
 src/render/       Phaser scenes and rendering.
 src/ui/           Management UI.
 src/platform/     Web / Telegram / Android adapters.
 src/persistence/  Save, load, sync.
-src/config/       Economy and balance data (no scattered magic numbers).
-assets/           Replaceable sprites, animations, audio, UI (see docs/ASSET_SPECIFICATION.md).
-docs/             Design, architecture and handoff documents.
+src/config/       Economy and balance data.
+assets/           Sprites, tiles, UI, audio, and concept art (art direction only, never loaded by the game).
+docs/             Design, architecture, workflows, economy, asset spec, roadmap, handoff.
 tests/            Unit and integration tests.
+scripts/          Repository tooling.
 ```
 
 ## Workflow
 
-`main` is protected. Work on feature branches, open a pull request, CI must pass. Every substantial change updates the docs and adds an entry to `docs/AI_HANDOFF.md`.
+Work happens on feature branches and is merged through pull requests; CI must pass. **Branch protection on `main` is not enabled yet** (see below), so this is currently a convention, not an enforced rule. Every substantial change updates the docs and adds an entry to `docs/AI_HANDOFF.md`.
+
+## Repository settings that need the repository owner
+
+These cannot be done by the build environment and are **not yet done** unless noted in `docs/AI_HANDOFF.md`.
+
+**Make the repository private** (it is currently public): GitHub > Settings > General > Danger Zone > Change repository visibility > Make private.
+
+**Protect `main`**: Settings > Branches > Add branch ruleset (or classic rule) for `main`: require a pull request before merging; require status check `Lint, typecheck, test, build`; block force pushes and deletions. Or, with an authenticated `gh` and admin rights, run `scripts/protect-main.sh OWNER/idle-depot`. Branch protection on private repositories depends on your GitHub plan.
+
+**Repository description**: Settings > General: `IDLE DEPOT — Isometric Container Depot Management & Idle Tycoon Simulation`.

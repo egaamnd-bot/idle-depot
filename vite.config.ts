@@ -6,6 +6,8 @@ export default defineConfig({
   build: {
     target: 'es2022',
     chunkSizeWarningLimit: 1500,
+    // Never inline assets as data URIs: Phaser's loader and the replace-the-file workflow expect real files.
+    assetsInlineLimit: 0,
     rollupOptions: {
       output: {
         manualChunks: { phaser: ['phaser'] },
