@@ -11,6 +11,7 @@
 ### Changed
 - ESLint: `src/core` forbids clocks, `Math.random`, `crypto`, and imports of `config` and `app`.
 - Boot scene shows sim tick and save status (wiring check).
+- CI workflow now runs on pull requests to any branch (stacked PRs previously got no checks).
 
 ## Phase 0 (branch `feature/phase-0-completion`)
 
