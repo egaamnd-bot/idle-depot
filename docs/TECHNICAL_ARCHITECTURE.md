@@ -1,6 +1,6 @@
 # Technical Architecture
 
-Status: Phase 0 review of the scaffold. Verdicts are based on running the code, not on intent.
+Status: Phase 0 review of the scaffold, updated for the Phase 1 foundation (simulation kernel, persistence, platform boundary; branch `feature/phase-1-sim-kernel-and-boundaries`). Verdicts are based on running the code, not on intent.
 
 ## 1. Layers
 
@@ -37,20 +37,23 @@ Dependencies point inward. `src/core` may import nothing from outer layers; ESLi
 | Core isolation | Met, after a fix | Probe file importing phaser, render and assets from core failed lint; the **assets** import was initially *not* caught and the rule was extended |
 | Render / UI separation | Partly | Only BootScene exists. UI technology undecided: Phaser game objects vs a DOM overlay. Proposal: DOM overlay for panels (accessible, crisp text), Phaser for the world. Decide in P1-08 |
 | Asset registry | Met | `src/assets/manifest.ts`, logical IDs, tests for orphans, missing files, baked text, audio headers, pack manifest equality |
-| Persistence boundary | Missing | No interface yet. Add `SaveStore` and versioned save envelope in Phase 1 (local only) |
-| Platform adapters | Missing | No interface yet. Add `PlatformAdapter` (id, storage, lifecycle events, haptics) with a web implementation in Phase 1; Telegram and Android later |
-| Testing | Partly | Unit tests for rules and assets. No simulation integration tests (no simulation yet), no browser test in CI |
+| Persistence boundary | Met (local) | `SaveStore`, versioned envelope with checksum, migration chain, frozen v1 fixture test. Cloud store is Phase 7 |
+| Platform adapters | Met (web only) | `PlatformAdapter` (time, seed, storage, lifecycle) with a web implementation; `telegram` and `android` ids are reserved, adapters deliberately unwritten |
+| Testing | Partly | 117 unit and integration tests: rules, assets, kernel determinism, persistence, runtime, boot policy. Browser check is manual (`scripts/browser-check.py`), not in CI |
 | Config-driven economy | Not started | Only types and docs. Phase 4 |
 | Empty `src/core/simulation`, `src/core/economy`, `server/` | Placeholders | Keep as structure markers |
 
 Not introduced: no state-management library, no UI framework, no ECS library, no Capacitor, Telegram SDK, Supabase or server yet. Reason: each is added in the phase that needs it (`ROADMAP.md`).
 
-## 3. Simulation architecture
+## 3. Simulation architecture (implemented in `src/core/simulation`)
 
-- **Fixed timestep** (proposal 1 s of sim time per tick at 1x), deterministic: `advance(state, config, rng, ticks) -> state`. Same state, config, seed and ticks give the same result.
-- **Seeded RNG** passed in; core never calls `Math.random()` or reads the clock.
-- **Events** emitted by core (container arrived, surveyed, moved, repaired, dispatched, revenue earned) and consumed by renderer and UI. Rendering never mutates simulation state.
-- **Time**: core receives timestamps. Wall-clock handling lives in the platform layer.
+- **Fixed timestep**: `advance(state, config, modules, ticks) -> { state, events }`. The same state, modules and tick count always give the same result; advancing by a then b equals advancing by a+b (tested). The input is never mutated (work happens on a deep copy). `tickMs` is a provisional placeholder (1000) until Producer decision D10.
+- **Per tick**: counter increments, due scheduled commands are delivered in `(at, order)` order to registered handlers, then systems run in array order. Work scheduled during a tick lands on a later tick (delay >= 1), so a tick always terminates. An unknown event type throws; nothing is silently dropped.
+- **Seeded RNG** (`Rng`, mulberry32, one uint32 of state saved inside the simulation state, so loading a save continues the same random sequence). Verified against an independent reference implementation. ESLint forbids `Math.random`, `Date`, `performance` and `crypto` inside `src/core`.
+- **Events**: two kinds. `emit` records something that happened (output for renderer and UI, never re-delivered); `schedule` queues a command for a future tick. Output events carry a strictly increasing `seq`. Rendering never mutates simulation state.
+- **Real time to ticks**: `FixedStepper` (accumulator with a catch-up cap). Integer-millisecond input yields the same ticks however it is sliced into frames; fractional deltas can differ by one tick at a boundary but no time is lost.
+- **Modules, not rules**: the kernel is generic over the world. Departments, yard and economy plug in as `systems` and `handlers` later. `DEPOT_MODULES` is intentionally empty until Producer decisions D1-D15 land.
+- **Time**: core receives timestamps and ticks. Wall-clock handling lives in the platform layer and `SimRuntime`.
 - **Department model**: each department has capacity, a queue and a `step`. Queue pressure produces the congestion effects in `OPERATIONAL_WORKFLOWS.md` section 5.
 - **Yard model** (Phase 1): grid of blocks, rows, slots, stack height; laden/empty zoning; occupancy ratio.
 
@@ -62,10 +65,14 @@ Principle: one pure function, two callers. `advance()` runs live on the client f
 - Phase 7 (server authoritative): the server stores `lastSyncServerTime`, recomputes offline progress with the same `advance`, and credits the result. The client clock is never used for rewards. Requests carry a client-generated idempotency key to prevent double claims.
 - No complex offline rewards are built before that server architecture exists.
 
+## 4b. Composition root and runtime (implemented)
+
+`src/app/compose.ts` is the only place that wires platform, persistence, config and simulation. `SimRuntime` (`src/app/runtime.ts`) turns frame deltas into ticks, advances the simulation, notifies event subscribers, autosaves every N ticks, and saves on pause. Saves are serialised, so an older snapshot can never overwrite a newer one. Boot policy: empty slot starts a new game from a platform seed; a loadable save resumes; a save that exists but cannot be loaded (corrupt, newer build, failed migration) starts an in-memory game with **saving locked**, so the unreadable save is never overwritten. Lint also forbids `src/core` from importing `src/config` and `src/app`.
+
 ## 5. Persistence
 
-- Save envelope: `{ version, savedAt, payload }`. Every schema change adds a migration `vN -> vN+1` with a test using a frozen sample of the old version.
-- Local: `SaveStore` interface (web storage first; Capacitor storage later).
+- Save envelope (implemented): `{ format, version, savedAt, checksum, payload }`, canonical JSON. The checksum catches accidental corruption (it is not tamper protection). Every schema change bumps `CURRENT_SAVE_VERSION` and adds a migration `vN -> vN+1`; the chain is tested with synthetic migrations, and `tests/fixtures/save-v1.json` is a frozen v1 sample that must load forever. Checksums are verified before migrating. Saves from a newer build are refused. Non-JSON-safe state (NaN, undefined, Map, class instances) is rejected at write time.
+- Local (implemented): `SaveStore` interface; `StorageSaveStore` over Web Storage with prefixed keys. If storage is unavailable (private mode) the web adapter falls back to memory and reports `storagePersistent: false`. Not built yet: backup slot, Capacitor storage.
 - Cloud (Phase 7): PostgreSQL/Supabase tables per `CONTAINER_DATA_MODEL.md` section 6, with SQL migrations and check constraints mirroring the rule tables. Row-level security on user id.
 - Authoritative state and validation live server-side; the client holds a cache.
 
@@ -76,8 +83,8 @@ One codebase and one Vite build with a relative base. `PlatformAdapter` isolates
 ## 7. Testing architecture
 
 - Unit: rules, economy maths (Phase 4), registry (exists).
-- Integration: headless workflow simulations over `advance()` (Phase 2).
-- Determinism: golden-seed test per milestone.
+- Integration: runtime and boot-policy tests exist; headless workflow simulations over `advance()` come with Phase 2.
+- Determinism: golden seed test exists (seed 42, 300 ticks, cross-checked against an independent Python re-implementation); add one per milestone.
 - Browser: `scripts/browser-check.py` today (manual); Playwright in CI is proposed once Phase 1 has a stable scene, accepted only if it adds more signal than its dependency cost.
 - Performance: frame-time and memory budget on a mid-range Android profile before Phase 2 content.
 

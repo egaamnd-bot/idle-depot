@@ -30,7 +30,8 @@ python3 scripts/browser-check.py http://localhost:4173/ gallery.png
 ## Layout
 
 ```
-src/core/         Simulation. No Phaser, UI, platform, persistence or asset imports (enforced by ESLint).
+src/core/         Deterministic simulation. No Phaser, UI, platform, persistence, asset, config or app imports, no clocks, no Math.random (enforced by ESLint).
+src/app/          Composition root and runtime: the only place wiring platform, persistence, config and simulation.
 src/assets/       Asset registry (logical IDs -> files). Rendering code uses IDs, never paths.
 src/render/       Phaser scenes and rendering.
 src/ui/           Management UI.

@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { ASSETS, AUDIO, type AssetEntry, type AssetGroup } from '../assets/manifest';
 import { assetUrl } from '../assets/urls';
+import type { App } from '../app/compose';
 
 /**
  * Foundation scene: loads every registered asset through Phaser and shows them as a gallery.
@@ -8,9 +9,15 @@ import { assetUrl } from '../assets/urls';
  */
 export class BootScene extends Phaser.Scene {
   private failed: string[] = [];
+  private app: App | null = null;
+  private simText: Phaser.GameObjects.Text | null = null;
 
   constructor() {
     super('BootScene');
+  }
+
+  init(data: { app?: App }): void {
+    this.app = data.app ?? null;
   }
 
   preload(): void {
@@ -64,9 +71,27 @@ export class BootScene extends Phaser.Scene {
     document.body.dataset.assetsAudio = `${loadedAudio}/${totalAudio}`;
     document.body.dataset.assetsFailed = this.failed.join(',');
 
+    this.simText = this.add.text(12, y + 44, '', { color: '#14243a', fontSize: '14px' });
+
     this.input.on('pointerdown', () => {
       this.sound.play(AUDIO.sfx.click, { volume: 0.5 });
     });
+  }
+
+  override update(_time: number, delta: number): void {
+    const app = this.app;
+    if (!app || !this.simText) return;
+    app.runtime.update(delta);
+    const st = app.runtime.saveStatus;
+    const boot = app.boot.kind === 'loaded' ? `resumed (v${app.boot.migratedFrom})` : app.boot.kind;
+    this.simText.setText(
+      `sim tick ${app.runtime.state.tick} · ${boot}\nsave: ${
+        st.lockedReason ? 'LOCKED' : st.lastError ? 'ERROR' : st.lastSavedAt ? 'ok' : 'pending'
+      }${app.platform.storagePersistent ? '' : ' (not persistent)'}`,
+    );
+    document.body.dataset.simTick = String(app.runtime.state.tick);
+    document.body.dataset.boot = app.boot.kind;
+    document.body.dataset.saveStatus = st.lockedReason ? 'locked' : st.lastError ? 'error' : st.lastSavedAt ? 'ok' : 'pending';
   }
 
   private addThumb(item: AssetEntry, x: number, y: number, size: number): void {

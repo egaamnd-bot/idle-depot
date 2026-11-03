@@ -1,6 +1,18 @@
 # Changelog
 
-## Unreleased (branch `feature/phase-0-completion`)
+## Unreleased (branch `feature/phase-1-sim-kernel-and-boundaries`, stacked on `feature/phase-0-completion`)
+
+### Added
+- Deterministic simulation kernel: seeded RNG, fixed-step stepper, `advance()` with ordered event delivery, canonical JSON and hashing, state validation (`src/core/simulation`).
+- Versioned save envelope with checksum and migration foundation, `SaveStore`, Web Storage store, typed save/load (`src/persistence`).
+- `PlatformAdapter` and web implementation (`src/platform`); composition root and `SimRuntime` with autosave, pause-save and save lock (`src/app`); sim config placeholders (`src/config/sim.ts`).
+- 66 new tests (117 total), frozen v1 save fixture, browser persistence check.
+
+### Changed
+- ESLint: `src/core` forbids clocks, `Math.random`, `crypto`, and imports of `config` and `app`.
+- Boot scene shows sim tick and save status (wiring check).
+
+## Phase 0 (branch `feature/phase-0-completion`)
 
 ### Added
 - Asset Pack v1.1 integrated: 68 game files (58 SVG, 10 WAV) and 2 concept PNGs under `assets/`; pack manifest kept as `assets/pack-manifest-v1.1.json`.
