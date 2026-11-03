@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+coverage/
+*.tsbuildinfo
+
+# Env / secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.keystore
+*.jks
+
+# Capacitor / Android
+android/app/build/
+android/.gradle/
+android/local.properties
+*.apk
+*.aab
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+npm-debug.log*
